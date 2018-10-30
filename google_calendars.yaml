@@ -1,0 +1,35 @@
+
+- cal_id: fvd0a4orfo45mfg51e8tj8rhck@group.calendar.google.com
+  entities:
+  - device_id: familia
+    ignore_availability: true
+    name: Familia
+    track: true
+
+- cal_id: 2pacshakur892@gmail.com
+  entities:
+  - device_id: 2pacshakur892gmailcom
+    ignore_availability: true
+    name: 2pacshakur892@gmail.com
+    track: true
+
+- cal_id: '#contacts@group.v.calendar.google.com'
+  entities:
+  - device_id: contacts
+    ignore_availability: true
+    name: Contacts
+    track: true
+
+- cal_id: pt.brazilian#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_brazil
+    ignore_availability: true
+    name: Holidays in Brazil
+    track: true
+
+- cal_id: family08113686408691956466@group.calendar.google.com
+  entities:
+  - device_id: family
+    ignore_availability: true
+    name: Family
+    track: true

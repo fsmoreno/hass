@@ -1,0 +1,226 @@
+#################### fontes ##################################
+#https://github.com/TribuneX/home_assistant/blob/master/includes/scripts.yaml
+#https://github.com/yahat/broadlink_mini_homeassistant_ir_codes_samsung_tv
+  - platform: broadlink
+    name: broadlink-Sala
+    host: !secret broadlink_host
+    mac: !secret broadlink_mac
+    switches:
+      ht_samsung:
+        friendly_name: "Samsung Receiver"
+        command_on: 'JgB8AFQ9ECQQJBAMEAwQDBAMECQQDBAlDyUQDBAMECQQDBAkEAwQJBAMEAwQDBAMEAwQDBAMEAwQDBAkEAwQDBAMEAwQCxAMEAwQDBAMEAwQDBAMEAwQDBALECUQDBAMEAsQDBAMEAABEAUABJ1UbA4ABYdUbQ0ABYdUbQ0ADQUAAAAAAAAAAAAAAAA='
+        command_off: 'JgB8AFQ9ECQQJBAMEAwQDBAMECQQDBAlDyUQDBAMECQQDBAkEAwQJBAMEAwQDBAMEAwQDBAMEAwQDBAkEAwQDBAMEAwQCxAMEAwQDBAMEAwQDBAMEAwQDBALECUQDBAMEAsQDBAMEAABEAUABJ1UbA4ABYdUbQ0ABYdUbQ0ADQUAAAAAAAAAAAAAAAA='
+      ht_samsung_vol_down_5:
+        friendly_name: "Turn down receiver volume 5 times"
+        command_on: 'JgZsAFI+DicPJQ4ODg4ODg4ODiYODg4mDicODg0PDScODg4mDg4OJg4ODw0ODg4ODg4ODg4ODg4NDg4nDw0ODg4ODQ4ODg4ODg4PDQ4ODiYOJw4ODQ4OJw4mDyUPDQ4ODg4ODg4ODgAFUlJvDQANBQAAAAAAAAAAAAAAAA=='
+        command_off: ""
+      ht_samsung_bdvd:
+        friendly_name: "Source BDVD"
+        command_on: 'JgB+AFI/DiYOJw0ODg4ODg4ODiYODg4nDiYODg4ODiYODg4mDw0OJw4ODg4NDg4ODg4ODg4ODg4ODg4mDg4ODg4ODg4ODg4ODiYODg4mDg4ODg4mDg4ODg4nDQ4ODg4nDg4ODg4NDgAFUlJvDQAFiFJvDgAFhlNvDgAFh1RtDgANBQAAAAAAAAAAAAA='
+        command_off: ""
+      ht_samsung_game:
+        friendly_name: "Source Game"
+        command_on: 'JgB+AFI/DiYPJQ8NDw0ODg4ODiYODg4mDyYODg0PDScODg8lDw0OJg4OEAwPDQ4ODw0ODg4PDA8NDw0nDg8NDg0PDg4NDg8NDiYODg8mDg4NJw8NDg4ODw0ODQ4PDg4mDQ8NDg4PDQAFalJvDQAFiFJuDQAFiFNuDAAFiVJvDQANBQAAAAAAAAAAAAA='
+        command_off: ""
+      ht_samsung_vol_down_10:
+        friendly_name: "Turn down receiver volume 10 times"
+        command_on: 'JgtsAFI+DicPJQ4ODg4ODg4ODiYODg4mDicODg0PDScODg4mDg4OJg4ODw0ODg4ODg4ODg4ODg4NDg4nDw0ODg4ODQ4ODg4ODg4PDQ4ODiYOJw4ODQ4OJw4mDyUPDQ4ODg4ODg4ODgAFUlJvDQANBQAAAAAAAAAAAAAAAA=='
+        command_off: ""
+      ht_samsung_vol_up_5:
+        friendly_name: "Turn up receiver volume 5 times"
+        command_on: 'JgZyAFI/DiYPJg0ODg4ODg4ODyUPDQ4nDyUODg4ODiYODg8lDg4OJw8NDQ8NDg4ODg4ODg4ODg4ODg4mDg4PDQ4ODg4ODg4ODQ8NDg4ODg4OJw0ODg4PDQ4nDiYODg4ODg4NDw4NDgAFg1JvDQAFiFJvDQANBQAAAAAAAA=='
+        command_off: ""
+      ht_samsung_vol_up_10:
+        friendly_name: "Turn up receiver volume 10 times"
+        command_on: 'JgtyAFI/DiYPJg0ODg4ODg4ODyUPDQ4nDyUODg4ODiYODg8lDg4OJw8NDQ8NDg4ODg4ODg4ODg4ODg4mDg4PDQ4ODg4ODg4ODQ8NDg4ODg4OJw0ODg4PDQ4nDiYODg4ODg4NDw4NDgAFg1JvDQAFiFJvDQANBQAAAAAAAA=='
+        command_off: ""
+      tv_samsung:
+        friendly_name: "Samsung TV"
+        command_on: 'JgCMAJOVETgSOBM3EhMTEhITERQREhM3EzgSOBIUEhIRExISEhQREhI4ExITEhISEhMSEhMSEjgTEhI4EjkROBI4EzcSOBMABgiUlBI4EzcTNxEUExIRFBETEhMROBM3EjgSFBETEhISFBESExMROBITEhMRExMSEhISFBM2EhITOBI4EzcTNxI4EzcSAA0FAAAAAAAAAAAAAAAA'
+        command_off: 'JgCMAJOVETgSOBM3EhMTEhITERQREhM3EzgSOBIUEhIRExISEhQREhI4ExITEhISEhMSEhMSEjgTEhI4EjkROBI4EzcSOBMABgiUlBI4EzcTNxEUExIRFBETEhMROBM3EjgSFBETEhISFBESExMROBITEhMRExMSEhISFBM2EhITOBI4EzcTNxI4EzcSAA0FAAAAAAAAAAAAAAAA'
+      tv_samsung_source:
+        friendly_name: "Source HDMI1"
+        command_on: 'JgGMAJOUFDcTNxI4ExETEhITEhITEhI4EjgSOBMSExISEhMSExITNxMREhMSExISEhMSEhMSExISOBI4EjgSOBI4FDcTNxMABgiTlRI4EjgTNxMSExISEhMSEhITOBI4EzcSEhMSEhMSEhMSEjgTEhISExISExISEhMSEhMSEjgTNxM3EzgTNxI4EjgTAA0FAAAAAAAAAAAAAAAA'      
+      tv_samsung_source_tv:  
+        friendly_name: "Source TV"
+        command_on: 'JgGMAJOUFDcTNxI4ExETEhITEhITEhI4EjgSOBMSExISEhMSExITNxMREhMSExISEhMSEhMSExISOBI4EjgSOBI4FDcTNxMABgiTlRI4EjgTNxMSExISEhMSEhITOBI4EzcSEhMSEhMSEhMSEjgTEhISExISExISEhMSEhMSEjgTNxM3EzgTNxI4EjgTAA0FAAAAAAAAAAAAAAAA'
+        command_off: ""
+      tv_samsung_hdmi1:
+        friendly_name: "TV Samsung HDMI1"
+        command_on: 'JgBGAJKVETkRORE5ERQQFRAVERQQFRE5ETkROREUERQRFBEUERQRORAVERUPOxAVDzsQOhA6EBUQOhA6EBUQOhAVEBUPFhAADQUAAA=='
+        command_off: ""
+      tv_samsung_hdmi2:
+        friendly_name: "TV Samsung HDMI2"
+        command_on: 'JgBGAJOUETkRORA6ERQQFRAVERQRFBA6ETkROhAVDxYQFQ8WEBUQFQ87EDoRORA6DzsQFRA6DzsPFhAVDxYQFRAVEDoQFRAADQUAAA=='
+        command_off: ''
+      tv_samsung_tv: 
+        friendly_name: "TV Samsung channel TV"
+        command_on: 'JgDSAJSUEjgSNxM3EhISExISEhIRFBI3EjgSNxITERMSExETEhISOBI3ExISNxI4EhISExETERMSExI3ERQRExI4ETgSOBEABgGUlBM2EjYUNxMSERMSExISEhISOBI3EjgTERITERMSEhITETgSOBISEjgSNxITEhIRExITEhISOBISEhISOBI4EjcSAAYAlJQSOBI3EzcSEhITEBQSEhITETgSOBI3EhMRExISEhMSEhI4EzYRFBE4EjgSEhITERMSEhITETgSExETEjcSOBI4EgANBQAAAAAAAA==='
+        command_off: ""
+      projetor:
+        friendly_name: "Optoma HD142x"
+        command_on: 'JgBYAAABK5EVEBU2FRAWDxU1FTUWEBUQFTUVEBU1FjQWEBYPFTUWNBYPFTYWDxYPFRAVEBYPFg8WNRUQFTUWNBY0FjUWNBY0FgAFBAABK0cVAAxFAAEqSBMADQU='
+        command_off: 'JgJQAAABK5EWEBU1FRAVEBY0FjUVEBUQFTUWEBU1FTUVEBUQFTUWNRUQFTUVNRY1FRAVNRUQFRAWNRUQFRAVEBU1Fg8WNRU1FQAFBQABK0cWAA0FAAAAAAAAAAA='
+      tela_projetor:
+        friendly_name: "Tela Projetor"
+        command_on: 'sgCwABgMGAsNAAFWnzEZCxgLDRcYDAwYDBcZCwwYDBcNFxkLGAsNFw0XDBgMFxkLGAwMFw0XGAwYCxkLGAwMFw0XDRcYDAwXDRcNFxgLDRcMGAwYGAsZCxgLGQsNAAFWnjEZCxgMDBcZCw0XDBcZCwwYDBcNFxkLGAwMFw0XDBgMGBgLGAwMFw0XGAwYDBgLGAwMFw0XDRcYCw0XDRcNFxgLDRcNFwwYGAsZCxgMGAsNAAXcAAAAAAAAAAA='
+        command_off: 'sgCgAp0yFw0XDAwYFw0LGQsYFw0LGQsYDBgXDRcMCxkLGQsYDBgXDBgMCxkLGRcMGAwXDRcMDBgLGAwZFwwMGAsZCxgXDQsYDBgXDRcMDBgLGRcMGAABS50yGAwXDQsYFw0LGQsYGAwLGQsYDBgXDRcMDBgLGQsYDBgYDBcNCxgMGBcNFwwYDBcNCxgMGAsZFwwMGAsZCxgYDAwYCxkXDBcNCxgMGBgMFwABTJ0yFw0XDAwYFw0LGQsYFw0LGAwYDBgXDRcMCxkLGQsYDBgXDRcMDBgLGRcMGAwXDRcMDBgLGQsZFg0LGQsZCxgYDAsYDBkWDRcNCxgMGBcNFwABS54yFwwYDAsZFwwMGAsYGAwMGAsYDBgYDBcNCxgMGAwYCxkXDBgMCxgMGBgMFw0XDBcNCxkLGAsZFw0LGAwYDBgXDAwYDBgXDBgMDBgLGRcMGAABY54yFwwXDQsYGAwLGQsYGAwMGAsZCxgYDBcMDBgMGAsZCxgXDRcNCxgMGBcNFw0XDBcNCxgMGAsZFw0LGAsZCxkXDAsZCxgYDBcNFw0XDAwYCwABV54yFwwYDAwYFwwMGAwYFwwMGAwYCxkXDBgMCxkLGAwYCxkXDBgMDBgLGRcMFw0XDBcNDBgLGQsYFw0LGAwYDBgXDQsYDBgXDRcMGAwXDAwYDAABV54xGAwYDAsZFwwMGAsZFg0LGQsZCxgYDBcNCxgMGAsZCxkXDBcNCxkLGBgMFw0WDRcNCxgMGAwYFwwMGAwYCxkXDAwYDBgXDBgMFw0XDAwYCwABV54yFw0XDAsZFwwMGAwYFw0LGAwYCxkXDBcNCxkLGQsYDBgXDBgMCxkLGRcMFw0XDRcMDBgLGQsYGAwLGQsYDBgXDQsYDBgXDRcMGAwXDQsYDAAF3BgMCxkLGAwY'
+      xbox_one:
+        friendly_name: "xbox One"
+        command_on: 'JgBQAAABI5ESExMSEhMSExITEhMSExI3EhITEhITEjcSNxITEjcSNxITEjcSEhI3EhMSNxQREhMSNxITEjcSExI2EhMSNxI3EgAFiwABI0kSAA0FAAAAAAAAAAA='
+        command_off: 'JgBQAAABI5ISExISEhMSExMSEhMSExI3EhMSEhMSEjcUNRYPEjcSNxI3EhMSEhI3EhMSNxITEhMRFBI2EzYSExI3EhMSNxI3EgAFigABI0kSAA0FAAAAAAAAAAA='
+      xbox_one_up:
+        friendly_name: "xbox One up"
+        command_on: 'JgBQAAABI5ISExITEhMSExITEhITEhI3EhMSExITEjcSNxITEjYTNhITEjcTNhI3EjcSExITEhITNhITEhMSExITEjcSNxI3EgAFigABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_down:
+        friendly_name: "xbox One down"
+        command_on: 'JgBQAAABI5ISExITERMSExITEhMSExI3EhMSExISEzYSNxITEjUUNxI3EjcSNhM2EzUTExITEhMSExITEhMSEhMSEjcSNxI3EwAFigABIkkSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_left:
+        friendly_name: "xbox One left"
+        command_on: 'JgBQAAABJpISExITEhMSExISExISExI3EhMSExITEjcSNxITEjYTNhITEhMSExIUERMROBITEhMRNxI3EjcSNxI3EhMSNxI3EgAFigABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_right:
+        friendly_name: "xbox One right"
+        command_on: 'JgBQAAABI5ESExITEhMSExITEhMSEhM2EhMSExITEjcSNxITEjYTNhI3EhMSExITEhMSNxITEhMSEhE4EjcSNxI3EhMSNxI3EgAFhwABJkkSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_ok:
+        friendly_name: "xbox One ok"
+        command_on: 'JgBQAAABI5ISExITEhMSExITEhITEhI3EhMSExITEjcSNxMSEzYSNxI3EjcSExI3EhMSExITEhISFBISETgSExI3EjYTOBE3EgAFjAABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_play:
+        friendly_name: "xbox One play"
+        command_on: 'JgBQAAABIpISExITEhMSExITERQSExI2ExISExITEjcSNxITEjcSNxISEjcSNxITEjcSExEUEhMSNxISExITNhITEjcSNxI3EgAFigABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_pause:
+        friendly_name: "xbox One pause"
+        command_on: 'JgBQAAABI5ISExISExISExITEhMSExI3EhMVDxYPEzYSNxITEjcSNxISExMSExQ0EzYUERITFg8SNxI3EjcSExITEjYTNhI3EwAFigABI0kTAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_rewind:
+        friendly_name: "xbox One rewind"
+        command_on: 'JgBQAAABI5ISExITEhMVDxITEhMSExI3EhMSEhMTEjcSNxITETcTNhE4EhMSNxITEjYTExIRFBMSEhE4EhMSNxMSEjcSNxI3EgAFiwABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_forward:
+        friendly_name: "xbox One forward"
+        command_on: 'JgBQAAABJJESExITEhMSExITEhISExI3EhMSExITEjcSNhMTEjcSNhMSEhMSNxITEjcSExITEhMSNxI3EhITNhMSEjYTNxI3EgAFiwABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_back:
+        friendly_name: "xbox One back"
+        command_on: 'JgBQAAABI5ESExITEhMSExITEhMSExI3EhMSEhMSEjcSNxIUETcSNxI3EjcSExITEhITNhITEhMSExITEjcSNxI3EhMSNhM2EgAFiwABJEgSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_red:
+        friendly_name: "xbox One red"
+        command_on: 'JgBQAAABIpISExITEhMSExITEhMSEhI3EhMSExITEjcSNxITFDUSNhM2ExISNxITExISNxI3Fg8SEhM2EhMSNxI3EhMSExI3EgAFigABI0kVAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_blue:
+        friendly_name: "xbox One blue"
+        command_on: 'JgBQAAABI5ISExITEhMRFBITERITExI3EhMSExITEjcSNxITEjYTNhITEhMSExI3EhMSNxI1FBQRNhM2EzYSExI3EhMSExI3EgAFiwABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_green:
+        friendly_name: "xbox One green"
+        command_on: 'JgBQAAABI5ITEhITEhMSExITEhMSEhM2ExITEhITEjcTNhMSEjcSNxITEjcRNxMSExISNxI3EhMSNxITEhMSNxI3EhMSExE3EgAFjAABIkkSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_yellow:
+        friendly_name: "xbox One yellow"
+        command_on: 'JgBQAAABI5ESExITEhMSExISExMSExI3EhISExMSEjcWMxITEjcSNxI3EjcSNxITEhITNhM2EhMSExITEhMSNxI3EhMSExI2EwAFigABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_stop:
+        friendly_name: "xbox One stop"
+        command_on: 'JgBQAAABI5ISExISExISExITEhMRFBI3EhMSExISEzYVNBITEjcSNxI3EhMSExI3EjcSEhITEhMSExM2EjcSExITEjcSNxE3EwAFigABI0kWAA0FAAAAAAAAAAA='
+        command_off:  ""
+      xbox_one_home:
+        friendly_name: "xbox One home"
+        command_on: 'JgBQAAABJJESExITEhITEhITEhMSExI3EhMTEREUEzYSNxITEjcSNxISEhMSNxITEhMSNxI3FBERNxI3EhMSNxI3EhMSExI2EgAFigABI0kSAA0FAAAAAAAAAAA='
+        command_off:  ""
+      mibox:
+        friendly_name: "Android TV"
+        command_on: 'JgBOACETExMTMhMyExMTMhMTEzITExMyEzIUAAEpIRMTExMyEzITExMyExMTMhMTEzITMhQAASkhExMTEzITMhMTEzITExMyExMTMhMyFAAIBQ=='
+        command_off:  'JgBOACETExMTMhMyExMTMhMTEzITExMyEzIUAAEpIRMTExMyEzITExMyExMTMhMTEzITMhQAASkhExMTEzITMhMTEzITExMyExMTMhMyFAAIBQ=='
+      mibox_menu:
+        friendly_name: "Android TV Menu"
+        command_on: 'JgBOACETEyUTExMdEyUTExMTEyUTExMdEyUUAAEpIRMTJRMTEx0TJRMTExMTJRMTEx0TJRQAASkhExMlExMTHRMlExMTExMlExMTHRMlFAAIBQ=='
+        command_off:  ''
+      mibox_return:
+        friendly_name: "Android TV RETURN"
+        command_on: 'JgCcACMRFSQVEhUaFiQUEhUSFBsWLRUlFBwVAAGUIxEVJBUSFRsVJBURFRIUHBUuFSQVGxUAAZQiEhUlFREUHBQlFRIUEhUbFS4VJBUbFQABlCMRFSUVERUbFCYVERURFRsVLhUlFRoVAAGVIhIVJBUR'
+        command_off:  ''
+      mibox_ok:
+        friendly_name: "Android TV OK"
+        command_on: 'JgBOACETEyUTExMdEyUTExMTEzITHRMTEzIUAAEpIRMTJRMTEx0TJRMTExMTMhMdExMTMhQAASkhExMlExMTHRMlExMTExMyEx0TExMyFAAIBQ=='
+        command_off:  ''     
+      mibox_up:
+        friendly_name: "Android TV UP"
+        command_on: 'JgBOACETEyUTExMdEyUTExMTEx0THRMlEzIUAAEpIRMTJRMTEx0TJRMTExMTHRMdEyUTMhQAASkhExMlExMTHRMlExMTExMdEx0TJRMyFAAIBQ=='
+        command_off:  ''
+      mibox_down:
+        friendly_name: "Android TV DOWN"
+        command_on: 'JgBOACETEyUTExMdEyUTExMTEx0TJRMlExMUAAEpIRMTJRMTEx0TJRMTExMTHRMlEyUTExQAASkhExMlExMTHRMlExMTExMdEyUTJRMTFAAIBQ=='
+        command_off:  ''
+      mibox_left:
+        friendly_name: "Android TV LEFT"
+        command_on: 'JgBOACETEyUTExMdEyUTExMTEyUTMhMdEx0UAAEpIRMTJRMTEx0TJRMTExMTJRMyEx0THRQAASkhExMlExMTHRMlExMTExMlEzITHRMdFAAIBQ=='
+        command_off:  ''
+      mibox_right:
+        friendly_name: "Android TV RIGHT"
+        command_on: 'JgBOACETEyUTExMdEyUTExMTEzITExMTEyUUAAEpIRMTJRMTEx0TJRMTExMTMhMTExMTJRQAASkhExMlExMTHRMlExMTExMyExMTExMlFAAIBQ=='
+        command_off:  ''
+      mibox_volup:
+        friendly_name: "Android TV VOL UP"
+        command_on: 'JgBOACETEyUTExMdEyUTExMTEzITJRMTExMUAAEpIRMTJRMTEx0TJRMTExMTMhMlExMTExQAASkhExMlExMTHRMlExMTExMyEyUTExMTFAAIBQ=='
+        command_off:  ''
+      mibox_voldown:
+        friendly_name: "Android TV VOL DOWN"
+        command_on: 'JgBOACETEyUTExMdEyUTExMTEzITMhMTEx0UAAEpIRMTJRMTEx0TJRMTExMTMhMyExMTHRQAASkhExMlExMTHRMlExMTExMyEzITExMdFAAIBQ=='
+        command_off:  ''
+
+  - platform: wake_on_lan
+    name: windows_pc
+    host: !secret windows_host
+    mac_address: !secret pc_mac
+    turn_off:
+      - service: notify.chrome
+        data:
+          message: "desligar computador"
+  - platform: wake_on_lan
+    name: storage_pc
+    host: !secret storage_ip
+    mac_address: !secret storage_mac
+    turn_off:  
+      - service: shell_command.poweroff_storage
+  - platform: deluge
+    host: !secret deluge_host
+    username : !secret deluge_username
+    password : !secret deluge_password
+  - platform: template
+    switches:
+      cinema_session:
+        value_template: "{{ is_state('switch.projetor', 'on') }}"
+        turn_on:
+          service: script.turn_on
+          data:
+            entity_id: script.cinema_session
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.finish_cinema_session
+      netflix_mibox:
+        value_template: "{{ is_state('switch.mibox', 'on') }}"
+        turn_on:
+          service: script.turn_on
+          data:
+            entity_id: script.netflix_mibox_on
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.netflix_mibox_off
+      tv_session:
+        value_template: "{{ is_state('switch.tv_samsung', 'on') }}"
+        turn_on:
+          service: script.turn_on
+          data:
+            entity_id: script.tv_session
+        turn_off:
+          service: script.turn_on
+          data:
+            entity_id: script.finish_tv_session

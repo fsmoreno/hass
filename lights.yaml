@@ -1,0 +1,94 @@
+  - platform: mqtt
+    name: "luz_sala_esquerda"
+    command_topic: "cmnd/casa/sala/lights/POWER1"
+    state_topic: "cmnd/casa/sala/lights/POWER1"
+    availability_topic: "tele/casa/sala/lights/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+  - platform: mqtt
+    name: "luz_sala_centro"
+    command_topic: "cmnd/casa/sala/lights/POWER2"
+    state_topic: "cmnd/casa/sala/lights/POWER2"
+    availability_topic: "tele/casa/sala/lights/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true 
+  - platform: mqtt
+    name: "luz_sala_direita"
+    command_topic: "cmnd/casa/sala/lights/POWER3"
+    state_topic: "cmnd/casa/sala/lights/POWER3"
+    availability_topic: "tele/casa/sala/lights/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+  - platform: mqtt
+    name: "luz_quarto"
+    command_topic: "cmnd/casa/sala/lights/POWER4"
+    state_topic: "cmnd/casa/sala/lights/POWER4"
+    availability_topic: "tele/casa/sala/lights/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+
+  - platform: template
+    lights:
+      left_lamp:
+        value_template: "{{ is_state('light.luz_sala_esquerda', 'on') }}"
+        turn_on:
+          service: light.toggle
+          data:
+            entity_id: light.luz_sala_esquerda
+        turn_off:
+          service: light.toggle
+          data:
+            entity_id: light.luz_sala_esquerda
+      center_lamp:
+        value_template: "{{ is_state('light.luz_sala_centro', 'on') }}"
+        turn_on:
+          service: light.toggle
+          data:
+            entity_id: light.luz_sala_centro
+        turn_off:
+          service: light.toggle
+          data:
+            entity_id: light.luz_sala_centro
+      right_lamp:
+        value_template: "{{ is_state('light.luz_sala_direita', 'on') }}"
+        turn_on:
+          service: light.toggle
+          data:
+            entity_id: light.luz_sala_direita
+        turn_off:
+          service: light.toggle
+          data:
+            entity_id: light.luz_sala_direita
+      bedroom_lamp:
+        value_template: "{{ is_state('light.luz_quarto', 'on') }}"
+        turn_on:
+          service: light.toggle
+          data:
+            entity_id: light.luz_quarto
+        turn_off:
+          service: light.toggle
+          data:
+            entity_id: light.luz_quarto
+
+  - platform: group
+    name: living_room_light
+    entities:
+      - light.luz_sala_esquerda
+      - light.luz_sala_centro
+      - light.luz_sala_direita

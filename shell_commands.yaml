@@ -1,0 +1,4 @@
+  open_kodi: echo -n "YatseStart-Xbmc" | nc -4u -q1 192.168.0.153 5600
+  poweroff_storage: /usr/bin/ssh root@192.168.0.152 'poweroff'
+  adb_connect: adb connect 192.168.0.153
+  open_netflix: adb shell monkey -p com.netflix.ninja 1

@@ -1,0 +1,202 @@
+  default_view:
+    view: yes
+    icon:  mdi:home
+    entities:
+      - sun.sun 
+      - sun.position
+      - sensor.weather_symbol
+      - group.deluge
+      - group.speed_test
+      - group.eventos  
+      - group.phone
+      - group.sistema
+      - input_select.hass_theme
+      - group.weather 
+      - device_tracker.fabio
+      - device_tracker.aline  
+  
+  luz_quarto:
+    name: "Luz do quarto"
+    view: no
+    icon: mdi:lightbulb
+    entities:
+      - light.luz_quarto
+
+  quarto:
+    name: "Quarto"
+    view: yes
+    icon: mdi:bed-empty
+    entities:
+      - group.luz_quarto
+
+  luzes_sala:
+    name: "Luzes da sala"
+    view: no
+    icon: mdi:lightbulb
+    entities:
+      - light.luz_sala_esquerda
+      - light.luz_sala_centro
+      - light.luz_sala_direita  
+
+  sala:
+    name: "Sala"
+    view: yes
+    icon: mdi:television
+    entities:
+      - group.luzes_sala
+      - group.sound  
+      - group.workstations
+      - group.box
+      - group.game  
+      - group.tv
+
+  kodi:
+    name: "Kodi Players"
+    view: yes
+    icon: mdi:kodi
+    entities: 
+      - media_player.kodi_sala
+      - media_player.kodi_mibox    
+
+  cast:
+    name: "Cast"
+    view: yes
+    icon: mdi:cast
+    entities:
+      - media_player.google_mini
+
+
+  music:
+    name: "Music"
+    view: yes
+    icon: mdi:spotify
+    entities:
+      - media_player.spotify
+      - input_number.spotify_volume
+      - input_select.spotify_source
+      - input_select.spotify_playlist
+      - script.spotify_music  
+      - group.spotify
+
+  spotify:
+    name: "Spotify"
+    view: no
+    entities:
+      - sensor.spotify_source
+      - sensor.spotify_media_title
+      - sensor.spotify_media_artist
+
+
+  Box:
+    name: "Android"
+    view: no
+    entities:
+      - switch.mibox
+      - media_player.android_tv
+  tv:
+    name: "TV"
+    view: no
+    entities:
+      - switch.tv_samsung
+       
+  workstations:
+    name: "Computadores"
+    view: no
+    entities:
+      - switch.windows_pc
+      - switch.storage_pc  
+  
+  sound:
+    name: "Audio"
+    view: no
+    entities:
+      - switch.ht_samsung    
+    
+  screens:
+    name: "Tela"
+    view: no
+    entities:
+      - switch.projetor
+      - switch.tela_projetor
+  
+  cine:
+    name: "Diversao"
+    view: yes
+    icon: mdi:theater
+    entities: 
+      - group.screens
+      - group.netflix  
+      - group.cinema
+ 
+  cinema:
+    name: "Cinema"
+    view: no
+    icon: mdi:theater
+    entities: 
+      - switch.cinema_session
+      - switch.tv_session  
+
+  netflix:
+    name: "Netflix"
+    view: no
+    entities: 
+      - switch.netflix_mibox
+
+  game:
+    name: "Game"
+    view: no
+    icon: mdi:gamepad-variant
+    entities:
+      - switch.xbox_one
+
+  speed_test:
+    name: "Wan"
+    view: no
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+  
+  deluge:
+    name: "Torrent"
+    view: no
+    entities:
+      - sensor.deluge_down_speed
+      - sensor.deluge_up_speed
+      - sensor.deluge_status 
+
+
+  eventos:
+    name: "Eventos"
+    view: no
+    entities:      
+      - calendar.familia
+      - sensor.event_description
+      - sensor.event_start 
+      - sensor.event_end
+      - sensor.event_message
+      - sensor.event_location     
+  weather:
+    name: "Tempo"
+    view: no
+    entities:
+      - sensor.weather_humidity
+      - sensor.weather_temperature
+  phone:
+    name: "Phone"
+    view: no
+    entities:
+      - sensor.battery_motox
+      - sensor.battery_samsung  
+
+
+  sistema:
+    name: "Home Assistant"
+    view: no
+    entities:
+      - sensor.cpu_temperature
+      - sensor.disk_use_percent
+      - sensor.memory_use_percent
+      - sensor.ipv4_address_eth0
+      - sensor.last_boot
+

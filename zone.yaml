@@ -1,0 +1,13 @@
+  - name: Onibus
+    latitude: !secret onibus_latitude
+    longitude: !secret onibus_longitude
+    radius: !secret onibus_radius
+  - name: Work
+    latitude: !secret work_latitude
+    longitude: !secret work_longitude
+    radius: !secret work_radius
+
+  - name: home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: !secret home_radius

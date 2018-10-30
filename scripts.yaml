@@ -1,0 +1,347 @@
+netflix:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >      
+         {% if is_state("input_select.netflix_source", "Android TV") %} script.netflix_mibox
+         {% elif is_state("input_select.netflix_source", "Xbox One") %} script.netflix_xbox_one
+         {% endif %}
+
+
+netflix_mibox_off:
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.ht_samsung
+    - service: switch.turn_on
+      data:
+        entity_id: switch.mibox_menu   
+    - service: switch.turn_off
+      data:
+        entity_id: switch.ht_samsung_bdvd
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_samsung
+    - service: switch.turn_off
+      data:
+        entity_id: switch.mibox       
+        
+  
+netflix_mibox_on:
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.ht_samsung
+    - delay:
+        seconds: 5   
+    - service: switch.turn_on
+      data:
+        entity_id: switch.ht_samsung_bdvd
+    - service: shell_command.adb_connect
+    - service: shell_command.open_netflix  
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_samsung
+    - delay:
+        seconds: 5
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_samsung_hdmi1
+    - service: switch.turn_on
+      data:
+        entity_id: switch.mibox
+
+
+netflix_xbox_one:
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.ht_samsung
+    - delay:
+        seconds: 20    
+    - service: switch.turn_on
+      data:
+        entity_id: switch.ht_samsung_game
+    - service: switch.turn_on
+      data:
+        entity_id: switch.xbox_one
+    - service: switch.turn_on
+      data:
+        entity_id: switch.xbox_one_green      
+    - service: switch.turn_on
+      data:
+        entity_id: switch.xbox_one_green
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_samsung
+    - delay:
+        seconds: 5
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_samsung_hdmi1
+    - service: tts.google_say
+      entity_id: media_player.google_mini
+      data:
+        message: "O netflix já esta preparado. Escolha seu Filme ou Série e Divirta-se!"
+        language: pt-BR
+
+spotify_fest:
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.ht_samsung
+    - service:  switch.turn_off
+      data:
+        entity_id: switch.tv_samsung
+    - service: switch.turn_on
+      data:
+        entity_id: switch.mibox
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.spotify
+        source: "Android TV"
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.spotify
+        media_content_id: !secret Old_School
+        media_content_type: 'playlist'
+    - service: media_player.shuffle_set
+      data:
+        entity_id: media_player.spotify
+        shuffle: true
+
+
+       ######################################################## Sessao de Filme ############################################################################3
+        
+
+tv_session:
+  sequence:
+    - service:  switch.turn_on
+      data:
+        entity_id: switch.tv_samsung
+    - delay:
+        seconds: 10
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_samsung_hdmi1
+    - service: switch.turn_on
+      data:
+        entity_id: switch.ht_samsung
+    - delay:
+        seconds: 10
+    - service: switch.turn_on
+      data:        
+        entity_id: switch.ht_samsung_bdvd
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.kodi_mibox
+
+
+finish_tv_session:
+  sequence:
+    - service:  switch.turn_on
+      data:
+        entity_id: switch.tv_samsung_tv
+    - delay:
+        seconds: 5
+    - service: switch.turn_off
+      data:
+        entity_id: switch.tv_samsung
+    - service: switch.turn_off
+      data:
+        entity_id: switch.ht_samsung
+    - delay:
+        seconds: 10
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.mibox_menu
+    - service: switch.turn_off
+      data:
+        entity_id: switch.mibox
+
+        ########################################################## Sessao de cinema #############################################################################
+
+cinema_session:
+  sequence:
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.kodi_mibox
+    - service: switch.turn_on
+      data:
+        entity_id: switch.projetor
+    - service: switch.turn_on
+      data:
+        entity_id: switch.ht_samsung
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tela_projetor 
+    - service: switch.turn_on
+      data:        
+        entity_id: switch.ht_samsung_bdvd
+    - service: notify.Motox4
+      data:
+        message: !secret launch_yatse
+    - service:  switch.turn_off
+      data:
+        entity_id: switch.tv_samsung
+
+finish_cinema_session:
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.projetor
+    - delay:
+        seconds: 10    
+    - service: switch.turn_off
+      data:
+        entity_id: switch.tela_projetor 
+    - service: switch.turn_off
+      data:        
+        entity_id: switch.ht_samsung
+    - service:  switch.turn_on
+      data:
+        entity_id: switch.tv_samsung
+    - service:  switch.turn_on
+      data:
+        entity_id: switch.tv_samsung_source_tv
+
+remote_control:
+  sequence:
+    - service: notify.Motox4
+      data:
+        message: !secret launch_yatse
+
+spotify_music:
+  alias: Play selected spotify playlist
+  sequence:
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.spotify
+        volume_level: '0.40'
+    - service: media_player.select_source
+      data_template: 
+        entity_id: media_player.spotify
+        source: >
+         {% if is_state("input_select.spotify_source", "Amor Celular") %} Celular Aline
+         {% elif is_state("input_select.spotify_source", "Celular Moreno") %} Celular Moreno
+         {% elif is_state("input_select.spotify_source", "PC Windows10") %} PC Windows10
+         {% elif is_state("input_select.spotify_source", "iPad") %} iPad
+         {% elif is_state("input_select.spotify_source", "Android TV") %} Android TV
+         {% endif %}
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.spotify
+        media_content_type: playlist
+        media_content_id: >
+          {% if is_state("input_select.spotify_playlist", "Nacional") %} spotify:user:2pacshakur892:playlist:2K5RkRd4AHMPlLPc4UFtsX
+          {% elif is_state("input_select.spotify_playlist", "Aline") %} spotify:user:2pacshakur892:playlist:7d5a8KGHl8CE5JRrq1RIH2
+          {% elif is_state("input_select.spotify_playlist", "Raggae") %} spotify:user:2pacshakur892:playlist:5rDAQ68HWAJmYhsKG62C3q
+          {% elif is_state("input_select.spotify_playlist", "Anthony Hamilton") %} spotify:user:2pacshakur892:playlist:2xSQI27vDFIlKjgLk44o5A
+          {% elif is_state("input_select.spotify_playlist", "Old School") %} spotify:user:2pacshakur892:playlist:6AcPfmrhv6O6gQzhPHT1Ls
+          {% endif %}
+    - service: media_player.shuffle_set
+      data:
+        entity_id: media_player.spotify
+        shuffle: true 
+
+pause_spotify:
+  alias: pause player spotify when shake phone
+  sequence:
+    - service: media_player.media_play_pause
+      data: 
+        entity_id: media_player.spotify
+
+pause_kodi_mibox:
+  alias: pause player kodi_mibox when shake phone
+  sequence:
+    - service: media_player.media_play_pause
+      data: 
+        entity_id: media_player.kodi_mibox
+
+pause_play_spotify_player:
+  alias: pause player when shake phone
+  sequence:
+    - service: script.turn_on
+      data_template: 
+        entity_id: > 
+          {% if is_state("media_player.spotify", "playing") %}  script.pause_spotify
+          {%-elif is_state("media_player.spotify", "paused") %}  script.pause_spotify
+          {% endif %}
+
+pause_play_kodi_player:
+  alias: play player when shake phone
+  sequence:
+    - service: script.turn_on
+      data_template: 
+        entity_id: > 
+          {% if is_state("media_player.kodi_mibox", "playing") %}  script.pause_kodi_mibox
+          {%-elif is_state("media_player.kodi_mibox", "paused") %}  script.pause_kodi_mibox
+          {% endif %}
+
+lights_living_room:
+  alias: Lights Cineroom
+  sequence:
+    - service: light.toggle
+      data:
+        entity_id: group.luz_sala
+
+lights_bedroom:
+  alias: Lights Bedroom
+  sequence:
+    - service: light.toggle
+      data:
+        entity_id: light.luz_quarto
+
+reiniciar_pc:
+  sequence:
+    - service: notify.chrome
+      data:
+        entity_id: windows_pc
+        message: 'reiniciar'
+lock_pc:
+  sequence:
+    - service: notify.chrome
+      data:
+        entity_id: windows_pc
+        message: 'bloquear'
+standby_pc:
+  sequence:
+    - service: notify.chrome
+      data:
+        entity_id: windows_pc
+        message: 'standby'
+hibernar_pc:
+  sequence:
+    - service: notify.chrome
+      data:
+        entity_id: windows_pc
+        message: 'hibernar'
+
+google_say:
+  sequence:
+    - service: tts.google_say
+      data:
+              #entity_id: media_player.google_mini
+        entity_id: media_player.mibox3
+        message: 'hello!'
+        
+kodi_play_command:
+  alias: Kodi Play Command
+  sequence:
+    - service: media_player.media_play_pause
+      data:
+        entity_id: media_player.kodi_mibox      
+                
+kodi_pause_command:
+  alias: Kodi Pause Command
+  sequence:
+    - service: media_player.media_play_pause
+      data:
+        entity_id: media_player.kodi_mibox
+
+kodi_stop_command:
+  alias: Kodi Stop Command
+  sequence:
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.kodi_mibox

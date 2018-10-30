@@ -1,0 +1,13 @@
+  - platform: joaoapps_join
+    api_key: !secret join_api_key
+    device_id: !secret chrome_device_id
+    device_names: Chrome
+    name: Chrome
+  - platform: joaoapps_join
+    api_key: !secret join_api_key
+    device_id: !secret motox_device_id
+    device_names: Motox4
+    name: Motox4
+  - platform: nfandroidtv
+    name: Mibox
+    host: !secret mibox_host

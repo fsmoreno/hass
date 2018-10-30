@@ -1,0 +1,72 @@
+  spotify_playlist:
+    name: 'Playlist:'
+    options:
+      - Nacional
+      - Aline
+      - Raggae
+      - Anthony Hamilton
+      - Old School
+    icon: mdi:spotify
+  spotify_source:
+    name: 'Source:'
+    options:
+      - Amor Celular
+      - Celular Moreno
+      - PC Windows10
+      - iPad
+      - Android TV  
+    initial: PC Windows10
+    icon: mdi:speaker-wireless
+
+
+  netflix_source:
+    name: 'Netflix Source:'
+    options:
+      - Android TV
+      - Xbox One
+    initial: Android TV
+    icon: mdi:netflix
+
+
+  choose_playlist:
+    name: 'Playlist:'
+    options:
+      - Nacional
+      - Aline
+      - Raggae
+      - Anthony Hamilton
+      - Old School
+    icon: mdi:spotify
+  
+  hass_theme:
+    name: HASS themes
+    options:
+      - default
+      - teal
+      - dark_orange
+    initial: default
+    icon: mdi:theme-light-dark     
+
+  
+  choose_why:
+    name: Escolha o que deseja Fazer
+    options:
+      - Nenhum
+      - Assistir Filme
+      - Assistir Netlflix
+      - Jogar Snes
+      - Jogar PSX1
+      
+    initial: Nenhum
+    icon: mdi:theater
+
+   
+  choose_screen:
+    name: Escolha a Tela
+    options:
+      - TV
+      - Projetor
+    initial: TV
+    icon: mdi:theater 
+
+

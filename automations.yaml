@@ -1,0 +1,172 @@
+        ########################################################### LIGAR TELA AO LIGAR PROJETOR ##################################################################3
+  - alias: "Turn On Screen Projetor"
+    trigger:
+      - platform: state
+        entity_id: switch.projetor
+        from: 'off'
+        to: 'on'
+    action:
+        service: switch.turn_on
+        entity_id: switch.tela_projetor
+
+  - alias: "Turn Off Screen Projetor"
+    trigger:
+      - platform: state
+        entity_id: switch.projetor
+        from: 'on'
+        to: 'off'
+    action:
+        service: switch.turn_off
+        entity_id: switch.tela_projetor
+
+        ################################################# KODI WINDOWS 10 PC #####################################################################################
+
+  - alias: "Kodi Play"
+    trigger:
+      - platform: state
+        entity_id: media_player.kodi_sala
+        from: 'idle'
+        to: 'playing'
+    action:
+        service: light.turn_off
+        entity_id: light.living_room_light
+
+  - alias: "Kodi off to Play "
+    trigger:
+      - platform: state
+        entity_id: media_player.kodi_sala
+        from: 'off'
+        to: 'playing'
+    action:
+        service: light.turn_off
+        entity_id: light.living_room_light
+  - alias: "Kodi Stopped/Pause"
+    trigger:
+      - platform: state
+        entity_id: media_player.kodi_sala
+        from: 'playing'
+        to: 'idle'
+    action:
+        service: light.turn_on
+        entity_id: light.living_room_light
+
+        ########################################################################   LUZES AO ABRIR KODI MIBOX ##########################################################
+
+
+  - alias: "Kodi Play Mibox"
+    trigger:
+      - platform: state
+        entity_id: media_player.kodi_mibox
+        from: 'idle'
+        to: 'playing'
+    action:
+        service: light.turn_off
+        entity_id: light.living_room_light
+
+  - alias: "Kodi off to Play Mibox"
+    trigger:
+      - platform: state
+        entity_id: media_player.kodi_mibox
+        from: 'off'
+        to: 'playing'
+    action:
+        service: light.turn_off
+        entity_id: light.living_room_light
+
+  - alias: "Kodi Stopped/Pause Mibox"
+    trigger:
+      - platform: state
+        entity_id: media_player.kodi_mibox
+        from: 'playing'
+        to: 'idle'
+    action:
+        service: light.turn_on
+        entity_id: light.living_room_light
+
+        ############################################################# CONTROLAR VOLUME bOX ##########################################################
+
+  - alias: Mibox - Adjust Volume
+    trigger:
+      - platform: state
+        entity_id: input_number.mibox_volume
+    action:
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.mibox3
+          volume_level: '{{ states.input_number.mibox_volume }}'
+
+
+        ##################################################### CHEGANDO EM CASA ##########################################################################
+
+  - alias: Chegando em Casa 
+    trigger:
+      - platform: zone
+        entity_id: device_tracker.fabio
+        zone: zone.home
+        #Event is either enter or leave
+        event: enter
+    action:
+      - service: light.toggle
+        entity_id: light.living_room_lights
+      - service: switch.turn_on
+        entity_id: switch.tv_samsung
+
+        ############################################################## NOVO TORRENT BAIXADO ######################################################################
+
+  - alias: Novo Arquivo Criado
+    trigger:
+      - platform: event
+        event_type: folder_watcher
+        event_data:
+          event_type: created
+    action:
+      - service: notify.motox4
+        data_template:
+          title: Novo Filme Encontrado!
+          message: "Created {{ trigger.event.data.file }} in {{ trigger.event.data.folder }}"
+          data:
+            file: "{{ trigger.event.data.path }}"
+
+            ####################################################### SPOTIFY PLAYLIST PLAYER #####################################################################
+  - alias: Scene Basement
+    trigger:
+      - platform: state
+        entity_id: input_select.choose_playlist
+    action:
+      - service: script.turn_on
+        data_template:
+          entity_id: >
+            {% if is_state("input_select.choose_playlist", "Old School") %} script.spotify_fest
+            {% endif %}
+
+  - alias: Hass Theme
+    trigger:
+      - platform: state
+        entity_id: input_select.hass_theme
+    action:
+      - service: frontend.set_theme
+        data_template:
+          name: 
+            "{{ states.input_select.hass_theme.state}}"
+        ############################################################# TROCAR THEME DO HASS #######################################################################
+  - alias: switch_hass_template
+    trigger:
+     - platform: homeassistant
+       event: start
+    action:
+      - service: frontend.set_theme
+        data_template:
+         name: "{{ states.input_select.hass_theme.state }}"
+
+         ######################################################### ESCOLHER QUAL TELA USAR #####################################################################
+  - alias: choose_tv_screen
+    trigger:
+     - platform: state
+       entity_id: input_select.choose_screen
+    action:
+      service_template: >
+        {% if is_state("input_select.choose_screen", "TV") %}  script.tv_session
+        {%-elif is_state("input_select.choose_screen", "Projetor") %}  script.cinema_session
+        {% endif %}
+
+

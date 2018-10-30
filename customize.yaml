@@ -1,0 +1,124 @@
+light.luz_quarto:
+  friendly_name: Luz do Quarto
+light.luz_sala_esquerda:
+  friendly_name: Luz da Sala Esquerda
+light.luz_sala_centro:
+  friendly_name: Luz da Sala Central
+light.luz_sala_direita:
+  friendly_name: Luz da Sala Direita
+light.living_room_lights:
+  friendly_name: Luzes da Sala
+camera.moreno:
+  friendly_name: Google Maps      
+device_tracker.google_maps_110878042906538166457:
+  friendly_name: Moreno      
+  picture: https://graph.facebook.com/100001641087258/picture?type=normal
+device_tracker.aline:
+  friendly_name: Aline
+device_tracker.fabio:
+  friendly_name: Fabio
+media_player.kodi_mibox:
+  friendly_name: Kodi Media Player Android TV    
+switch.mibox:  
+  icon: mdi:android
+switch.windows_pc:
+  friendly_name: Windows PC      
+  assumed_state: false
+  icon: mdi:monitor
+switch.cinema_session:
+  friendly_name: Iniciar Cinema      
+  icon: mdi:theater
+switch.storage_pc:
+  friendly_name: Nas
+  assumed_state: false
+  icon: mdi:nas
+switch.ht_samsung:
+  icon: mdi:surround-sound-5-1
+switch.tv_samsung:
+  icon: mdi:television
+switch.projetor:
+  icon: mdi:projector
+switch.tela_projetor:
+  icon: mdi:projector-screen
+sensor.event_calendar:
+  icon: mdi:calendar
+sensor.event_start:
+  friendly_name: Inicio
+  icon: mdi:calendar
+sensor.event_end:
+  friendly_name: Termino
+  icon: mdi:calendar
+sensor.event_message:
+  friendly_name: Evento
+  icon: mdi:calendar
+sensor.event_description:
+  friendly_name: Descricao
+  icon: mdi:calendar
+sensor.event_location:
+  friendly_name: Local
+  icon: mdi:calendar
+zone.home:
+  icon: mdi:home
+zone.onibus:
+  icon: mdi:bus
+zone.work:
+  icon: mdi:worker
+script.spotify_music:
+  friendly_name: 'Spotify Play'
+  icon: mdi:play
+script.netflix:
+  friendly_name: 'Assistir Netflix'
+  icon: mdi:netflix
+switch.xbox_one:
+  assumed_state: false
+  friendly_name: 'Xbox ONe'
+  icon: mdi:xbox
+switch.netflix_mibox:
+  assumed_state: false
+  friendly_name: 'Netflix'
+  icon: mdi:netflix
+sensor.deluge_down_speed:
+  friendly_name: Deluge Download Speed
+  icon: mdi:download-network  
+sensor.deluge_up_speed:
+  friendly_name: Deluge Upload Speed
+  icon: mdi:upload-network
+sensor.deluge_status:
+  friendly_name: Deluge Status
+  icon: mdi:water
+  #switch.deluge:
+  #friendly_name: Paused / Active
+  #icon: mdi:play-pause
+media_player.kodi_sala:
+  friendly_name: Kodi Media Player Windows 10
+  icon: mdi:theater  
+sensor.weather_humidity:
+  friendly_name: Humidade
+sensor.weather_temperature:
+  friendly_name: Temperatura
+sensor.weather_symbol:
+  friendly_name: Tempo
+sun.sun:
+  friendly_name: Sol      
+sensor.battery_motox:
+  friendly_name: Bateria Moto X4
+sensor.battery_samsung:
+  friendly_name: Bateria Samsung
+sensor.speedtest_download:
+  friendly_name: Download
+sensor.speedtest_upload:
+  friendly_name: Upload
+sensor.speedtest_ping:
+  friendly_name: Ping
+sensor.spotify_source:
+  friendly_name: "Ouvindo Em:"
+  icon: mdi:spotify  
+sensor.spotify_media_title:
+  friendly_name: "Musica"
+  icon: mdi:spotify
+sensor.spotify_media_artist: 
+  icon: mdi:spotify
+  friendly_name: "Artista"      
+script.tv_session: 
+  icon: mdi:theater
+  friendly_name: "Tv Session"

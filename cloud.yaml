@@ -1,0 +1,142 @@
+google_actions:
+    filter:
+      include_entities:
+        - switch.cinema_session
+        - switch.windows_pc
+        - switch.storage_pc  
+        - script.remote_control
+        - switch.tv_samsung
+        - switch.ht_samsung
+        - switch.projetor
+        - switch.tela_projetor
+        - switch.xbox_one
+        - switch.mibox  
+      include_domains:
+        - light
+      exclude_entities:
+        - script.spotify_music
+        - light.living_room_light
+        - light.luz_sala_esquerda  
+        - light.luz_sala_centro  
+        - light.luz_sala_direita
+        - light.luz_quarto  
+      exclude_domains:
+        - group
+        - switch
+        - script
+    entity_config:
+      switch.cinema_session:
+        name: "Cinema Session"
+        aliases:
+          - Cinema Session
+          - Session Cinema
+          - Home Cinema
+          - Cinema
+        room: Cine room
+      switch.tv_samsung:
+        name: Samsung TV
+        aliases:
+          - Samsung TV
+          - TV
+          - TV Sala
+          - TV da Sala
+        room: living room
+      switch.ht_samsung:
+        name: Samsung Receiver
+        aliases:
+          - Samsung Receiver
+          - Home Theater
+          - HT
+          - Som da Sala
+        room: living room
+      switch.projetor:
+        name: Optoma HD142x
+        aliases:
+          - Projetor
+          - Projetor Sala
+          - Optoma
+        room: Cine room
+      switch.tela_projetor:
+        name: Tela Projetor
+        aliases:
+          - Tela Projetor
+          - Telão
+          - Big Screen
+          - Screen
+        room: Cine room
+      switch.xbox_one:
+        name: Xbox One
+        aliases:
+          - Xbox One
+          - Xbox
+          - Game
+          - Video Game
+        room: Game room
+      script.remote_control:
+        name: Control Remote
+        aliases:
+          - Yatse
+          - Controle Remoto
+          - Remote Control
+      switch.windows_pc:
+        name:  Windows PC
+        aliases:
+          - Desktop
+          - Computador
+          - Windows PC
+        room: living room
+      switch.storage_pc:
+        name:  Storage
+        aliases:
+          - Storage
+          - Nas
+        room: living room  
+      script.reiniciar_pc:
+        name: Reiniciar PC
+        aliases:
+          - Reboot PC
+          - Reiniciar PC
+      script.hibernar_pc:
+        name: Hibernar PC
+        aliases:
+          - Hibernate PC
+          - Hibernar PC
+      script.standby_pc:
+        name: StandBy PC
+        aliases:
+          - StandBy PC
+      script.lock_pc:
+        name: Bloquear PC
+        aliases:
+          - Lock PC
+      light.left_lamp:
+        name: Left Lamp
+        aliases:
+          - Left Lamp
+          - Luz sala Esquerda
+        room: living room
+      light.center_lamp:
+        name: Center Lamp
+        aliases:
+          - Center Lamp
+          - Luz Centro
+        room: living room
+      light.right_lamp:
+        name: Right Lamp
+        aliases:
+          - Right Lamp
+          - Luz Direita
+        room: living room
+      light.bedroom_lamp:
+        name: Bedroom Lamp
+        aliases:
+          - Bedroom Lamp
+          - Luz Quarto
+        room: Bedroom
+      switch.mibox:
+        name: Android TV
+        aliases:
+          - Android TV
+          - Mibox
+          - TV Box  
+        room: living room

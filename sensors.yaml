@@ -1,0 +1,106 @@
+  - platform: yr
+    name: Weather
+    forecast: 24
+    monitored_conditions:
+      - symbol
+      - humidity
+      - temperature        
+
+  - platform: template
+    sensors:
+      event_message:
+        value_template: "{{ states.calendar.familia.attributes.message }}"
+      event_description:
+        value_template: "{{ states.calendar.familia.attributes.description }}"
+      event_start:
+        value_template: "{{ states.calendar.familia.attributes.start_time }}"
+      event_end:
+        value_template: "{{ states.calendar.familia.attributes.end_time }}"
+      event_location:
+        value_template: "{{ states.calendar.familia.attributes.location }}"
+      sun_position:
+        value_template: "{{ states.sun.attributes.state }}"
+      battery_samsung:
+        value_template: "{{ states.device_tracker.aline.attributes.battery }}"
+      spotify_source:
+        value_template: "{{ states.media_player.spotify.attributes.source }}"
+      spotify_media_title:
+        value_template: "{{ states.media_player.spotify.attributes.media_title }}"
+      spotify_media_artist:
+        value_template: "{{ states.media_player.spotify.attributes.media_artist }}"
+
+
+   
+  - platform: mqtt
+    state_topic: "zanzito/motoxmoreno/battery_level"
+    name: "Battery"
+    unit_of_measurement: "%"
+    retain: true
+    #value_template: '{{ value_json.batt }}'
+    #device_class: battery
+  
+
+  - platform: template
+    sensors:
+      battery_motox:
+        unit_of_measurement: '%'
+        value_template: >
+          {%- if states.device_tracker.motoxmoreno_motoxmoreno.attributes.battery %}
+            {{ states.device_tracker.motoxmoreno_motoxmoreno.attributes.battery|round }}
+          {% else %}
+            {{ states.sensor.battery_motox.state }}
+          {%- endif %}
+        icon_template: '{%- if is_state("sensor.battery_motox", "unknown") %}mdi:battery-unknown{%- elif is_state_attr("device_tracker.motoxmoreno_motoxmoreno", "battery_status", "Charging") %}mdi:battery-charging{%- elif  states.device_tracker.motoxmoreno_motoxmoreno.attributes.battery <= 5 %}mdi:battery-outline{%- elif states.device_tracker.motoxmoreno_motoxmoreno.attributes.battery >= 95 %}mdi:battery{% else %}mdi:battery-{{(states.device_tracker.motoxmoreno_motoxmoreno.attributes.battery|float / 10)|round*10}}{%- endif %}'
+
+      battery_samsung:
+        unit_of_measurement: '%'
+        value_template: >
+          {%- if states.device_tracker.aline.attributes.battery %}
+            {{ states.device_tracker.aline.attributes.battery|round }}
+          {% else %}
+            {{ states.sensor.battery_samsung.state }}
+          {%- endif %}
+        icon_template: '{%- if is_state("sensor.battery_samsung", "unknown") %}mdi:battery-unknown{%- elif is_state_attr("device_tracker.aline", "battery_status", "Charging") %}mdi:battery-charging{%- elif  states.device_tracker.aline.attributes.battery <= 5 %}mdi:battery-outline{%- elif states.device_tracker.aline.attributes.battery >= 95 %}mdi:battery{% else %}mdi:battery-{{(states.device_tracker.aline.attributes.battery|float / 10)|round*10}}{%- endif %}'
+
+
+
+
+
+
+  - platform: deluge
+    name: deluge
+    host: !secret deluge_host
+    username: !secret deluge_username
+    password: !secret deluge_password
+    monitored_variables:
+      - 'current_status'
+      - 'download_speed'
+      - 'upload_speed'
+  - platform: speedtest
+    hour: 0
+    minute: 0
+    monitored_conditions:
+      - ping
+      - download
+      - upload 
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_use_percent
+      - type: network_in
+        arg: eth0
+      - type: network_out
+        arg: eth0
+      - type: ipv4_address
+        arg: eth0
+      - type: last_boot
+
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    # If errors occur, remove degree symbol below
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
+        

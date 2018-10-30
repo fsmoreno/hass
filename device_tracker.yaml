@@ -1,0 +1,34 @@
+  - platform: owntracks
+    track_new_devices: true
+    new_device_defaults:
+      track_new_devices: True
+      hide_if_away: False
+
+
+  - platform: google_maps
+    username: !secret tracker_username
+    password: !secret tracker_password
+    track_new_devices: true
+
+  - platform: nmap_tracker
+    hosts: 
+      - !secret storage_ip
+      - !secret windows_host
+      - !secret xbox_one 
+
+  - platform: mqtt_json
+    devices:
+      moreno: zanzito/motoxmoreno/location
+    track_new_devices: True
+    interval_seconds: 10
+    consider_home: 20
+
+
+  - platform: life360
+    username: !secret username_life360
+    password: !secret password_life360
+    interval_seconds: 10
+    filename: life360.conf
+    show_as_state: places, driving, moving
+    max_update_wait:
+      minutes: 30
