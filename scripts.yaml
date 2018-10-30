@@ -1,3 +1,4 @@
+############################################################### NETFLIX ##########################################################################
 netflix:
   sequence:
     - service: script.turn_on
@@ -7,7 +8,7 @@ netflix:
          {% elif is_state("input_select.netflix_source", "Xbox One") %} script.netflix_xbox_one
          {% endif %}
 
-
+         ################################################### DESLIGAR NETFLIX MIBOX ###################################################################
 netflix_mibox_off:
   sequence:
     - service: switch.turn_off
@@ -26,7 +27,8 @@ netflix_mibox_off:
       data:
         entity_id: switch.mibox       
         
-  
+        ################################################ LIGAR NETFLIX MIBOX ##########################################################################
+
 netflix_mibox_on:
   sequence:
     - service: switch.turn_on
@@ -51,6 +53,7 @@ netflix_mibox_on:
       data:
         entity_id: switch.mibox
 
+        ################################################### NETFLIX XBOX ONE ###########################################################
 
 netflix_xbox_one:
   sequence:
@@ -85,33 +88,8 @@ netflix_xbox_one:
         message: "O netflix já esta preparado. Escolha seu Filme ou Série e Divirta-se!"
         language: pt-BR
 
-spotify_fest:
-  sequence:
-    - service: switch.turn_on
-      data:
-        entity_id: switch.ht_samsung
-    - service:  switch.turn_off
-      data:
-        entity_id: switch.tv_samsung
-    - service: switch.turn_on
-      data:
-        entity_id: switch.mibox
-    - service: media_player.select_source
-      data:
-        entity_id: media_player.spotify
-        source: "Android TV"
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.spotify
-        media_content_id: !secret Old_School
-        media_content_type: 'playlist'
-    - service: media_player.shuffle_set
-      data:
-        entity_id: media_player.spotify
-        shuffle: true
 
-
-       ######################################################## Sessao de Filme ############################################################################3
+       ######################################################## Sessao de Filme na tv ##########################################################################
         
 
 tv_session:
@@ -135,7 +113,7 @@ tv_session:
     - service: media_player.turn_on
       data:
         entity_id: media_player.kodi_mibox
-
+        ##################################################### desligar sessao de filme na tv #################################################################3
 
 finish_tv_session:
   sequence:
@@ -204,12 +182,15 @@ finish_cinema_session:
     - service:  switch.turn_on
       data:
         entity_id: switch.tv_samsung_source_tv
+        ###############################################33 mensagem para abrir yatse celular #################################################################3
 
 remote_control:
   sequence:
     - service: notify.Motox4
       data:
         message: !secret launch_yatse
+
+        ################################################# spotify music #################################################################################
 
 spotify_music:
   alias: Play selected spotify playlist
@@ -278,6 +259,8 @@ pause_play_kodi_player:
           {%-elif is_state("media_player.kodi_mibox", "paused") %}  script.pause_kodi_mibox
           {% endif %}
 
+          ######################################## luzes sala ################################################33
+
 lights_living_room:
   alias: Lights Cineroom
   sequence:
@@ -285,12 +268,16 @@ lights_living_room:
       data:
         entity_id: group.luz_sala
 
+        ###########################################33 luzes quarto ###################################################
+
 lights_bedroom:
   alias: Lights Bedroom
   sequence:
     - service: light.toggle
       data:
         entity_id: light.luz_quarto
+
+        ############################################### controlar desktop ##################################################
 
 reiniciar_pc:
   sequence:
@@ -325,20 +312,13 @@ google_say:
         entity_id: media_player.mibox3
         message: 'hello!'
         
-kodi_play_command:
+kodi_pause_play_command:
   alias: Kodi Play Command
   sequence:
     - service: media_player.media_play_pause
       data:
         entity_id: media_player.kodi_mibox      
                 
-kodi_pause_command:
-  alias: Kodi Pause Command
-  sequence:
-    - service: media_player.media_play_pause
-      data:
-        entity_id: media_player.kodi_mibox
-
 kodi_stop_command:
   alias: Kodi Stop Command
   sequence:

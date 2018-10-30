@@ -46,27 +46,14 @@
       - dark_orange
     initial: default
     icon: mdi:theme-light-dark     
-
-  
-  choose_why:
-    name: Escolha o que deseja Fazer
-    options:
-      - Nenhum
-      - Assistir Filme
-      - Assistir Netlflix
-      - Jogar Snes
-      - Jogar PSX1
-      
-    initial: Nenhum
-    icon: mdi:theater
-
    
   choose_screen:
     name: Escolha a Tela
     options:
+      - Escolha
       - TV
       - Projetor
-    initial: TV
+    initial: Escolha
     icon: mdi:theater 
 
 

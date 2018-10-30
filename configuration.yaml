@@ -90,5 +90,5 @@ input_select: !include input_select.yaml
 
 
 http:
-  base_url: https://hass.morenosolucoes.com.br        
+  base_url: !secret base_url        
   api_password: !secret api_password
