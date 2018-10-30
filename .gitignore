@@ -3,6 +3,7 @@
 !*.yaml
 !.gitignore
 !themes/
+!screens/
 !custom_components
 *.conf
 *.txt
