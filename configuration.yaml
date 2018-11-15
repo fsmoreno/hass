@@ -62,10 +62,10 @@ tts:
 cloud: !include cloud.yaml
 
 
-logger:
-        default: critical
-        logs:
-          homeassistant.components.switch: info
+#logger:
+#        default: critical
+#        logs:
+#          homeassistant.components.switch: info
 
 
 google:
@@ -82,12 +82,12 @@ device_tracker: !include device_tracker.yaml
 notify: !include notify.yaml
 media_player: !include media_players.yaml
 shell_command: !include shell_commands.yaml
-camera: !include camera.yaml
+#camera: !include camera.yaml
 sensor: !include sensors.yaml
 zone: !include zone.yaml
 weather: !include weater.yaml
 input_select: !include input_select.yaml
-
+input_number: !include input_number.yaml
 
 http:
   base_url: !secret base_url        

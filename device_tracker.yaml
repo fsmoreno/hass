@@ -5,10 +5,10 @@
       hide_if_away: False
 
 
-  - platform: google_maps
-    username: !secret tracker_username
-    password: !secret tracker_password
-    track_new_devices: true
+      #- platform: google_maps
+      #username: !secret tracker_username
+      #password: !secret tracker_password
+      #track_new_devices: true
 
   - platform: nmap_tracker
     hosts: 

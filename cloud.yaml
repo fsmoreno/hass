@@ -6,11 +6,13 @@ google_actions:
         - switch.storage_pc  
         - script.remote_control
         - switch.tv_samsung
-        - switch.ht_samsung
         - switch.projetor
         - switch.tela_projetor
         - switch.xbox_one
-        - switch.mibox  
+        - switch.mibox 
+        - switch.onkyo_txrz730  
+        - switch.onkyo_txrz730_zone_2  
+        - switch.onkyo_txrz730_zone_3
       include_domains:
         - light
       exclude_entities:
@@ -41,14 +43,6 @@ google_actions:
           - TV Sala
           - TV da Sala
         room: living room
-      switch.ht_samsung:
-        name: Samsung Receiver
-        aliases:
-          - Samsung Receiver
-          - Home Theater
-          - HT
-          - Som da Sala
-        room: living room
       switch.projetor:
         name: Optoma HD142x
         aliases:
@@ -64,6 +58,28 @@ google_actions:
           - Big Screen
           - Screen
         room: Cine room
+      switch.onkyo_txrz730:
+        name: Onkyo TXRZ730
+        aliases:
+          - Receiver Onkyo
+          - Home Theater
+          - Onkyo Main
+          - Onkyo Zone One 
+        room: Living Room
+      switch.onkyo_txrz730_zone_2:
+        name: Onkyo TXRZ730 Zone Two
+        aliases:
+          - Receiver Onkyo Zone Two
+          - Onkyo Zone Two
+          - Zone Two  
+        room: Living Room
+      switch.onkyo_txrz730_zone_3:
+        name: Onkyo TXRZ730 Zone Three
+        aliases:
+          - Receiver Onkyo Zone Three
+          - Onkyo Zone Three
+          - Zone Three  
+        room: Living Room
       switch.xbox_one:
         name: Xbox One
         aliases:

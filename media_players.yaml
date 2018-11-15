@@ -34,3 +34,9 @@
       42eb50c8b6a7dd64803ecd1a379e8c1e3dc3567d: 'Celular Moreno'
       3124165475c73a0481ca2c51a6ada854cf27c257: 'PC Windows10'
 
+
+  
+  - platform: onkyo
+    host: 192.168.0.108
+    name: onkyo_txrz730
+      

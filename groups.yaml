@@ -73,6 +73,7 @@
     entities:
       - media_player.spotify
       - input_number.spotify_volume
+      - input_number.mibox_volume  
       - input_select.spotify_source
       - input_select.spotify_playlist
       - script.spotify_music  
@@ -110,8 +111,11 @@
     name: "Audio"
     view: no
     entities:
-      - switch.ht_samsung    
-    
+      - media_player.onkyo_txrz730
+      - media_player.onkyo_txrz730_zone_2
+      - media_player.onkyo_txrz730_zone_3
+      - media_player.onkyo_txrz730_ed4e14_2
+
   screens:
     name: "Tela"
     view: no
@@ -134,7 +138,9 @@
     icon: mdi:theater
     entities: 
       - switch.cinema_session
-      - switch.tv_session  
+      - switch.tv_session
+      - input_select.choose_screen
+      - input_select.choose_why  
 
   netflix:
     name: "Netflix"

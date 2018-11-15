@@ -34,6 +34,16 @@ switch.storage_pc:
   icon: mdi:nas
 switch.ht_samsung:
   icon: mdi:surround-sound-5-1
+media_player.onkyo_txrz730_ed4e14_2:
+  friendly_name: Receiver Onkyo TX-RZ730 Cast
+  icon: mdi:surround-sound-5-1
+media_player.onkyo_txrz730:
+  friendly_name: Receiver Onkyo TX-RZ730
+  icon: mdi:surround-sound-5-1
+media_player.onkyo_txrz730_zone_2:
+ friendly_name: "Receiver Onkyo TX-RZ730 Zone 2"
+media_player.onkyo_txrz730_zone_3:
+ friendly_name: "Receiver Onkyo TX-RZ730 Zone 3"
 switch.tv_samsung:
   icon: mdi:television
 switch.projetor:
@@ -119,6 +129,7 @@ sensor.spotify_media_title:
 sensor.spotify_media_artist: 
   icon: mdi:spotify
   friendly_name: "Artista"      
-script.tv_session: 
+switch.tv_session: 
   icon: mdi:theater
   friendly_name: "Tv Session"
+

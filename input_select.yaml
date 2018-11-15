@@ -56,4 +56,11 @@
     initial: Escolha
     icon: mdi:theater 
 
-
+  choose_why:
+    name: Escolha o que deseja fazer
+    options:
+      - Escolha
+      - Filme
+      - Netflix
+    initial: Escolha
+    icon: mdi:theater

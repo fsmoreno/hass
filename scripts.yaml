@@ -1,4 +1,4 @@
-############################################################### NETFLIX ##########################################################################
+        ############################################################### NETFLIX ##########################################################################
 netflix:
   sequence:
     - service: script.turn_on
@@ -13,13 +13,10 @@ netflix_mibox_off:
   sequence:
     - service: switch.turn_off
       data:
-        entity_id: switch.ht_samsung
+        entity_id: switch.onkyo_txrz730
     - service: switch.turn_on
       data:
         entity_id: switch.mibox_menu   
-    - service: switch.turn_off
-      data:
-        entity_id: switch.ht_samsung_bdvd
     - service: switch.turn_on
       data:
         entity_id: switch.tv_samsung
@@ -27,28 +24,63 @@ netflix_mibox_off:
       data:
         entity_id: switch.mibox       
         
+
+        ################################################ Escolher Screen ##########################################################################
+
+choose_screen:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >      
+         {% if is_state("input_select.choose_screen", "TV") %} script.turn_on_tv
+         {% elif is_state("input_select.choose_screen", "Projetor") %} script.turn_on_projetor
+         {% endif %}
+
+       ################################################ LIGAR TV ##########################################################################
+
+turn_on_tv:        
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_samsung
+    - delay:
+        seconds: 10
+    - service: switch.turn_on
+      data:
+        entity_id: switch.tv_samsung_hdmi1
+
+        ################################################ LIGAR Projetor ##########################################################################
+
+turn_on_projetor:        
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.projetor
+
+
         ################################################ LIGAR NETFLIX MIBOX ##########################################################################
 
 netflix_mibox_on:
   sequence:
     - service: switch.turn_on
       data:
-        entity_id: switch.ht_samsung
+        entity_id: media_player.onkyo_txrz730
     - delay:
         seconds: 5   
-    - service: switch.turn_on
+    - service: media_player.select_source
       data:
-        entity_id: switch.ht_samsung_bdvd
+        entity_id: media_player.onkyo_txrz730
+        source: Bluray
     - service: shell_command.adb_connect
     - service: shell_command.open_netflix  
-    - service: switch.turn_on
-      data:
-        entity_id: switch.tv_samsung
-    - delay:
-        seconds: 5
-    - service: switch.turn_on
-      data:
-        entity_id: switch.tv_samsung_hdmi1
+      #- service: switch.turn_on
+      #data:
+      # entity_id: switch.tv_samsung
+      #- delay:
+      #  seconds: 5
+      #- service: switch.turn_on
+      #data:
+      #  entity_id: switch.tv_samsung_hdmi1
     - service: switch.turn_on
       data:
         entity_id: switch.mibox
@@ -57,14 +89,15 @@ netflix_mibox_on:
 
 netflix_xbox_one:
   sequence:
-    - service: switch.turn_on
+    - service: media_player.turn_on
       data:
-        entity_id: switch.ht_samsung
+        entity_id: media_player.onkyo_txrz730
     - delay:
         seconds: 20    
-    - service: switch.turn_on
+    - service: media_player.select_source
       data:
-        entity_id: switch.ht_samsung_game
+        entity_id: media_player.onkyo_txrz730
+        source: Game
     - service: switch.turn_on
       data:
         entity_id: switch.xbox_one
@@ -91,7 +124,6 @@ netflix_xbox_one:
 
        ######################################################## Sessao de Filme na tv ##########################################################################
         
-
 tv_session:
   sequence:
     - service:  switch.turn_on
@@ -102,17 +134,19 @@ tv_session:
     - service: switch.turn_on
       data:
         entity_id: switch.tv_samsung_hdmi1
-    - service: switch.turn_on
+    - service: media_player.turn_on
       data:
-        entity_id: switch.ht_samsung
+        entity_id: media_player.onkyo_txrz730
     - delay:
         seconds: 10
-    - service: switch.turn_on
+    - service: media_player.select_source
       data:        
-        entity_id: switch.ht_samsung_bdvd
+        entity_id: media_player.onkyo_txrz730
+        source: Bluray
     - service: media_player.turn_on
       data:
         entity_id: media_player.kodi_mibox
+
         ##################################################### desligar sessao de filme na tv #################################################################3
 
 finish_tv_session:
@@ -125,9 +159,9 @@ finish_tv_session:
     - service: switch.turn_off
       data:
         entity_id: switch.tv_samsung
-    - service: switch.turn_off
+    - service: media_player.turn_off
       data:
-        entity_id: switch.ht_samsung
+        entity_id: media_player.onkyo_txrz730
     - delay:
         seconds: 10
     - service: media_player.turn_on
@@ -147,21 +181,26 @@ cinema_session:
     - service: switch.turn_on
       data:
         entity_id: switch.projetor
-    - service: switch.turn_on
+    - service: script.turn_on
       data:
-        entity_id: switch.ht_samsung
+        entity_id: script.turn_on_receiver_projetor
     - service: switch.turn_on
       data:
         entity_id: switch.tela_projetor 
-    - service: switch.turn_on
-      data:        
-        entity_id: switch.ht_samsung_bdvd
     - service: notify.Motox4
       data:
         message: !secret launch_yatse
     - service:  switch.turn_off
       data:
         entity_id: switch.tv_samsung
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.onkyo_txrz730_zone_2
+        source: Bluray
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.onkyo_txrz730
+        source: Bluray
 
 finish_cinema_session:
   sequence:
@@ -173,16 +212,18 @@ finish_cinema_session:
     - service: switch.turn_off
       data:
         entity_id: switch.tela_projetor 
-    - service: switch.turn_off
+    - service: script.turn_on
       data:        
-        entity_id: switch.ht_samsung
+        entity_id: script.turn_off_receiver_mode_cinema
     - service:  switch.turn_on
       data:
         entity_id: switch.tv_samsung
     - service:  switch.turn_on
       data:
-        entity_id: switch.tv_samsung_source_tv
-        ###############################################33 mensagem para abrir yatse celular #################################################################3
+        entity_id: switch.tv_samsung_tv
+
+
+        ############################################### mensagem para abrir yatse celular #################################################################
 
 remote_control:
   sequence:
@@ -259,7 +300,6 @@ pause_play_kodi_player:
           {%-elif is_state("media_player.kodi_mibox", "paused") %}  script.pause_kodi_mibox
           {% endif %}
 
-          ######################################## luzes sala ################################################33
 
 lights_living_room:
   alias: Lights Cineroom
@@ -268,7 +308,7 @@ lights_living_room:
       data:
         entity_id: group.luz_sala
 
-        ###########################################33 luzes quarto ###################################################
+        ########################################### luzes quarto ###################################################
 
 lights_bedroom:
   alias: Lights Bedroom
@@ -325,3 +365,44 @@ kodi_stop_command:
     - service: media_player.media_stop
       data:
         entity_id: media_player.kodi_mibox
+
+turn_on_receiver_projetor:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >      
+         {% if is_state("media_player.onkyo_txrz730", "on") %} script.turn_on_zone2_zone1_on
+         {% elif is_state("media_player.onkyo_txrz730", "off") %} script.turn_on_zone2_zone1_off
+         {% endif %}
+
+turn_on_zone2_zone1_on:
+  alias: Power ON zone2 when zone main is ON
+  sequence:
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.onkyo_txrz730_zone_2
+
+turn_on_zone2_zone1_off:
+  alias: Power ON zone2 when zone main is OFF
+  sequence:
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.onkyo_txrz730
+    - delay:
+        seconds: 10
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.onkyo_txrz730_zone_2
+
+
+turn_off_receiver_mode_cinema:
+  alias: Power OFF zone2 when zone main is OFF
+  sequence:
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.onkyo_txrz730_zone_2
+    - delay:
+        seconds: 10
+    - service: media_player.turn_off
+      data:
+        entity_id: media_player.onkyo_txrz730
